@@ -4,3 +4,14 @@ export interface Product {
   amount: string;
   orderId?: number;
 }
+
+export interface Payload {
+  id: number;
+  username: string;
+  classe: string;
+  level: number;
+}
+
+export interface User extends Payload {
+  password: string;
+}
