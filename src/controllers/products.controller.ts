@@ -10,6 +10,12 @@ class ProductsController {
     this.productsService = new ProductsService();
   }
 
+  getAll = async (req: Request, res: Response) => {
+    const products = await this.productsService.getAll();
+
+    return res.status(statusCodes.OK).json(products);
+  };
+
   create = async (req: Request, res: Response) => {
     const product: Omit<Product, 'id' | 'orderId'> = req.body;
 

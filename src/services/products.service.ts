@@ -9,6 +9,12 @@ export default class ProductsService {
     this.productsModel = new ProductsModel(connection);
   }
 
+  async getAll(): Promise<Product[]> {
+    const products = await this.productsModel.getAll();
+
+    return products;
+  }
+
   async create(
     product: Omit<Product, 'id' | 'orderId'>,
   ): Promise<Omit<Product, 'orderId'>> {
