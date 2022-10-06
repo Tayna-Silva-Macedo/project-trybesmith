@@ -8,11 +8,11 @@ export interface Product {
 export interface Payload {
   id: number;
   username: string;
-  classe: string;
-  level: number;
 }
 
 export interface User extends Payload {
+  classe: string;
+  level: number;
   password: string;
 }
 
@@ -20,4 +20,9 @@ export interface Order {
   id: number;
   userId: number;
   productsIds: number[];
+}
+
+export interface Login {
+  username: string;
+  password: string;
 }

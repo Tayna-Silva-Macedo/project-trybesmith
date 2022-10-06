@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '../interfaces';
+import { Login, User } from '../interfaces';
 import UsersService from '../services/users.service';
 import statusCodes from '../shared/statusCodes';
 
@@ -9,6 +9,14 @@ class UsersController {
   constructor() {
     this.usersService = new UsersService();
   }
+
+  login = async (req: Request, res: Response) => {
+    const login: Login = req.body;
+
+    const token = await this.usersService.login(login);
+
+    return res.status(statusCodes.OK).json({ token });
+  };
 
   create = async (req: Request, res: Response) => {
     const user: Omit<User, 'id'> = req.body;
