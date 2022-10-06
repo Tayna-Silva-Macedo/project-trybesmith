@@ -5,4 +5,9 @@ const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-export default { loginSchema };
+const productSchema = Joi.object({
+  name: Joi.string().min(3).required(),
+  amount: Joi.string().min(3).required(),
+});
+
+export default { loginSchema, productSchema };
