@@ -15,3 +15,9 @@ export interface Payload {
 export interface User extends Payload {
   password: string;
 }
+
+export interface Order {
+  id: number;
+  userId: number;
+  productsIds: number[];
+}
