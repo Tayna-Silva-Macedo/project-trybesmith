@@ -33,6 +33,15 @@ export default class UsersService {
   }
 
   async create(user: Omit<User, 'id'>): Promise<string> {
+    const usernameExists = await this.usersModel.getByUsername(user.username);
+
+    if (usernameExists) {
+      throw new HttpException(
+        statusCodes.BAD_REQUEST,
+        'Username already exists',
+      );
+    }
+
     const insertId = await this.usersModel.create(user);
 
     const payload: Payload = {

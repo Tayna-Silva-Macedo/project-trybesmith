@@ -8,11 +8,20 @@ export default class UsersModel {
     this.connection = connection;
   }
 
+  async getByUsername(username: string): Promise<User | undefined> {
+    const [[user]] = await this.connection.execute<RowDataPacket[]>(
+      'SELECT * FROM Trybesmith.Users WHERE username = ?',
+      [username],
+    );
+
+    return user as User | undefined;
+  }
+
   async getByUsernameAndPassword(login: Login): Promise<User | undefined> {
     const { username, password } = login;
 
     const [[user]] = await this.connection.execute<RowDataPacket[]>(
-      'SELECT * FROM Trybesmith.Users WHERE username=? AND password=?',
+      'SELECT * FROM Trybesmith.Users WHERE username = ? AND password = ?',
       [username, password],
     );
 
