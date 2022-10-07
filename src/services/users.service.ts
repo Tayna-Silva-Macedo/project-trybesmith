@@ -12,7 +12,7 @@ export default class UsersService {
     this.usersModel = new UsersModel(connection);
   }
 
-  async login(login: Login) {
+  async login(login: Login): Promise<string> {
     const user = await this.usersModel.getByUsernameAndPassword(login);
 
     if (!user) {
