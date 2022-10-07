@@ -14,4 +14,18 @@ export default class OrdersService {
 
     return orders;
   }
+
+  async create(
+    productsIds: number[],
+    userId: number,
+  ): Promise<Omit<Order, 'id'>> {
+    await this.ordersModel.create(productsIds, userId);
+
+    const orderCreated = {
+      userId,
+      productsIds,
+    };
+
+    return orderCreated;
+  }
 }

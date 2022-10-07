@@ -10,7 +10,7 @@ const productsMiddleware = (
 ) => {
   const product = req.body;
 
-  const { error } = joi.productSchema.validate(product);
+  const { error } = joi.newProductSchema.validate(product);
 
   if (error) {
     const status = error.details[0].type === 'any.required'

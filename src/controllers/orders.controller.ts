@@ -9,10 +9,19 @@ class OrdersController {
     this.ordersService = new OrdersService();
   }
 
-  getAll = async (req: Request, res: Response) => {
+  getAll = async (_req: Request, res: Response) => {
     const orders = await this.ordersService.getAll();
 
     return res.status(statusCodes.OK).json(orders);
+  };
+
+  create = async (req: Request, res: Response) => {
+    const { productsIds } = req.body;
+    const { userId } = res.locals;
+
+    const orderCreated = await this.ordersService.create(productsIds, userId);
+
+    return res.status(statusCodes.CREATED).json(orderCreated);
   };
 }
 

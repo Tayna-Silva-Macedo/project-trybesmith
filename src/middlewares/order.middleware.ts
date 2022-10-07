@@ -3,10 +3,10 @@ import HttpException from '../shared/HttpException';
 import joi from '../shared/joi';
 import statusCodes from '../shared/statusCodes';
 
-const usersMiddleware = (req: Request, _res: Response, next: NextFunction) => {
-  const user = req.body;
+const orderMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  const order = req.body;
 
-  const { error } = joi.newUserSchema.validate(user);
+  const { error } = joi.newOrderSchema.validate(order);
 
   if (error) {
     const status = error.details[0].type === 'any.required'
@@ -19,4 +19,4 @@ const usersMiddleware = (req: Request, _res: Response, next: NextFunction) => {
   return next();
 };
 
-export default usersMiddleware;
+export default orderMiddleware;

@@ -5,16 +5,23 @@ const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-const productSchema = Joi.object({
+const newProductSchema = Joi.object({
   name: Joi.string().min(3).required(),
   amount: Joi.string().min(3).required(),
 });
 
-const userSchema = Joi.object({
+const newUserSchema = Joi.object({
   username: Joi.string().min(3).required(),
   classe: Joi.string().min(3).required(),
   level: Joi.number().min(1).required(),
   password: Joi.string().min(8).required(),
 });
 
-export default { loginSchema, productSchema, userSchema };
+const newOrderSchema = Joi.object({
+  productsIds: Joi.array().items(Joi.number()).min(1).required()
+    .messages({
+      'array.min': '{#label} must include only numbers',
+    }),
+});
+
+export default { loginSchema, newProductSchema, newUserSchema, newOrderSchema };
