@@ -35,10 +35,9 @@ docker-compose up -d
 docker exec -it trybesmith bash
 ```
 
-4. Por fim, dentro do container, instale as dependências, crie o banco de dados e rode a aplicação utilizando os comandos:
+4. Por fim, dentro do container, instale as dependências e rode a aplicação utilizando os comandos:
 ```
 npm install
-npm run restore
 npm start
 ```
 
