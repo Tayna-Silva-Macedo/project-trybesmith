@@ -1,5 +1,3 @@
-# 🚧 README em construção 🚧
-
 # Bem-vindo ao Projeto Trybesmith!
 
 Este é um projeto da [Trybe](https://www.betrybe.com/) que foi desenvolvido no módulo de Back-end. Trata-se de uma loja de itens medievais, no formato de uma API, utilizando TypeScript.
